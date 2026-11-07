@@ -1,18 +1,15 @@
 
-extends Control
 
-@onready var title = $MenuContainer/Title
-@onready var subtitle = $MenuContainer/Subtitle
+extends Control
 
 @onready var iniciar_button = $MenuContainer/IniciarButton
 @onready var tutorial_button = $MenuContainer/TutorialButton
-@onready var dupla_button = $MenuContainer/DuplaButton
 
 
 func _ready() -> void:
+    # Conecta os botões às suas funções.
     iniciar_button.pressed.connect(_on_iniciar_pressed)
     tutorial_button.pressed.connect(_on_tutorial_pressed)
-    dupla_button.pressed.connect(_on_dupla_pressed)
 
 
 # Inicia a primeira fase do jogo.
@@ -22,13 +19,8 @@ func _on_iniciar_pressed() -> void:
     )
 
 
-# Abre a tela de tutorial.
+# Abre o tutorial do jogo.
 func _on_tutorial_pressed() -> void:
     get_tree().change_scene_to_file(
         "res://scenes/Tutorial.tscn"
     )
-
-
-# Opção de jogo em dupla.
-func _on_dupla_pressed() -> void:
-    subtitle.text = "Modo dupla: em desenvolvimento!"
